@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Team {
+  id    Int    @id
+  name  String
+  users User[]
+
+  destroyedAt DateTime?
+
+  solvedProblems Problem[]
+}
+
+model User {
+  id             Int    @id @default(autoincrement())
+  name           String
+  githubUsername String
+
+  team   Team? @relation(fields: [teamId], references: [id])
+  teamId Int?
+
+  isLeader Boolean @default(false)
+
+  destroyedAt DateTime?
+
+  solvedProblems Problem[]
+}
+
+model Problem {
+  id          String  @id
+  score       Int
+  description String?
+
+  previous   Problem?  @relation("Previous", fields: [previousId], references: [id])
+  previousId String?
+  next       Problem[] @relation("Previous")
+
+  solvedUsers User[]
+  solvedTeams Team[]
+
+  destroyedAt DateTime?
+
+  isLeaderAssigned        Boolean @default(false)
+  isNonLeaderAssigned     Boolean @default(false)
+  requiredSolvedUserCount Int
+}
