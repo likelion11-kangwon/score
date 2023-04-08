@@ -21,24 +21,26 @@
 	</div>
 
 	<h3>대시보드</h3>
-	<Table bordered style="width: 400px;">
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>이름</th>
-				<th>점수</th>
-			</tr>
-		</thead>
-		<tbody>
-			{#each teams as team}
+	<Center>
+		<Table bordered style="width: 400px;">
+			<thead>
 				<tr>
-					<th>{team.id}</th>
-					<td>{team.name}</td>
-					<td>{team.score}</td>
+					<th>번호</th>
+					<th>이름</th>
+					<th>점수</th>
 				</tr>
-			{/each}
-		</tbody>
-	</Table>
+			</thead>
+			<tbody>
+				{#each teams as team}
+					<tr>
+						<th>{team.id}</th>
+						<td>{team.name}</td>
+						<td>{team.score}</td>
+					</tr>
+				{/each}
+			</tbody>
+		</Table>
+	</Center>
 {:else}
 	<Center>
 		<Spinner />
