@@ -16,7 +16,7 @@
 	<h3>제출하기</h3>
 	<div class="mb-3">
 		{#each teams as team}
-			<Button href={`/team/${team.id}`}>{team.name}</Button>
+			<Button class="mb-1" href={`/team/${team.id}`}>{team.name}</Button>
 		{/each}
 	</div>
 
