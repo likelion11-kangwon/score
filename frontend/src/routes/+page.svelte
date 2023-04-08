@@ -14,9 +14,9 @@
 
 {#if teams}
 	<h3>제출하기</h3>
-	<div class="mb-3">
+	<div class="mb-3 teams">
 		{#each teams as team}
-			<Button class="mb-1" href={`/team/${team.id}`}>{team.name}</Button>
+			<Button class="team" href={`/team/${team.id}`}>{team.name}</Button>
 		{/each}
 	</div>
 
@@ -50,3 +50,15 @@
 <svelte:head>
 	<title>Git 대회: 대시보드</title>
 </svelte:head>
+
+<style lang="scss">
+	.teams {
+		display: flex;
+		flex-direction: row;
+		column-gap: 4px;
+	}
+
+	.team {
+		flex: 1;
+	}
+</style>
