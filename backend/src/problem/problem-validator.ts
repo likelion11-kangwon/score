@@ -2,6 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Problem, Team, User } from '@prisma/client';
 import { ExecaChildProcess, execa } from 'execa';
+import moment from 'moment';
 import { MemoryStoredFile } from 'nestjs-form-data';
 
 export const VALIDATORS_SYMBOL = Symbol('Validators');
@@ -29,6 +30,8 @@ export class ProblemValidator {
     return file.buffer.toString('base64');
   }
 
+  readonly TIME_LIMIT = moment('2023-04-15 23:59:59');
+
   async validate(
     problem: Problem,
     input: Record<string, string | MemoryStoredFile>,
@@ -45,6 +48,15 @@ export class ProblemValidator {
         reason: string[];
       }
   > {
+    console.log(moment());
+    console.log(this.TIME_LIMIT);
+
+    if (moment().isAfter(this.TIME_LIMIT)) {
+      console.log('time limit over');
+
+      return { result: 'failed', reason: ['제출 기한이 지났습니다.'] };
+    }
+
     const inputString = JSON.stringify({
       ...Object.fromEntries(
         await Promise.all(

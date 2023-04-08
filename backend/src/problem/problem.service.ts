@@ -75,6 +75,10 @@ export class ProblemService {
         where: { id: user.id },
       });
 
+      await prisma.solvingLog.create({
+        data: { problemId: problem.id, userId: user.id, timestamp: new Date() },
+      });
+
       // 팀이 있는 경우 팀의 달성 여부를 업데이트한다
       if (user.teamId !== null) {
         let isLeader: boolean | undefined = undefined;

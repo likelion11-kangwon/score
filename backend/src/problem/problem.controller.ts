@@ -7,7 +7,6 @@ import {
   Post,
   Query,
   UseInterceptors,
-  UsePipes,
 } from '@nestjs/common';
 import { ProblemValidator } from './problem-validator.js';
 import { ProblemService } from './problem.service.js';
