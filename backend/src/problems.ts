@@ -10,7 +10,7 @@ export const PROBLEMS = {
   },
   '1-2': {
     isNonLeaderAssigned: true,
-    requiredSolvedUserCount: REQUIRED_SOLVED_USER_COUNT,
+    requiredSolvedUserCount: REQUIRED_SOLVED_USER_COUNT - 1,
     score: 6,
     previousId: '1-1',
   },
@@ -37,7 +37,7 @@ export const PROBLEMS = {
   },
   '2-2': {
     isNonLeaderAssigned: true,
-    requiredSolvedUserCount: REQUIRED_SOLVED_USER_COUNT,
+    requiredSolvedUserCount: REQUIRED_SOLVED_USER_COUNT - 1,
     score: 3,
     previousId: '2-1',
   },
@@ -64,7 +64,7 @@ export const PROBLEMS = {
   },
   '3-2': {
     isNonLeaderAssigned: true,
-    requiredSolvedUserCount: REQUIRED_SOLVED_USER_COUNT,
+    requiredSolvedUserCount: REQUIRED_SOLVED_USER_COUNT - 1,
     score: 3,
     previousId: '3-1',
   },
