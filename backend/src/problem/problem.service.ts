@@ -92,7 +92,11 @@ export class ProblemService {
         }
 
         const solvedUserCountInTeam = await prisma.user.count({
-          where: { teamId: user.teamId, isLeader },
+          where: {
+            teamId: user.teamId,
+            isLeader,
+            solvedProblems: { some: { id: problem.id } },
+          },
         });
 
         // 일정 인원 이상이 도전을 해결했다면
