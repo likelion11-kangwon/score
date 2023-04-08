@@ -185,6 +185,10 @@
 	<Center><Spinner /></Center>
 {/if}
 
+<svelte:head>
+	<title>Git 대회: 제출</title>
+</svelte:head>
+
 <style lang="scss">
 	.problems {
 		display: flex;

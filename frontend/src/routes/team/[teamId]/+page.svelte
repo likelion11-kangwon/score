@@ -26,8 +26,8 @@
 			.reduce((prev, curr) => prev + curr.score, 0);
 	}
 
-	let team: GetTeamResult;
-	let solvedProblems: GetTeamSolvedProblemsResult;
+	let team: GetTeamResult | undefined;
+	let solvedProblems: GetTeamSolvedProblemsResult | undefined;
 
 	onMount(async () => {
 		team = await getTeam(Number(data.teamId));
@@ -81,6 +81,10 @@
 		<Spinner />
 	</Center>
 {/if}
+
+<svelte:head>
+	<title>Git 대회: {team?.name}</title>
+</svelte:head>
 
 <style lang="scss">
 	.assignments {
